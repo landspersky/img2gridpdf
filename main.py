@@ -6,13 +6,13 @@ from PIL import Image
 from fpdf import FPDF
 
 INPUT_DIR = 'images'
-ALLOWED_FILES =['.png', '.jpg', '.jpeg', '.bmp']
+ALLOWED_FILES =('.png', '.jpg', '.jpeg', '.bmp')
 OUTPUT_DIR = 'output'
 PDF_NAME = f"{datetime.now().strftime("%Y-%m-%dT%H-%M-%S")}.pdf"
 
 PAGE_WIDTH, PAGE_HEIGHT = 210, 297 # standard A4 in mm
 MARGIN = 0
-SPACING = 0
+SPACING = 5
 
 GRID_ROWS, GRID_COLS = 3, 3
 CELL_WIDTH, CELL_HEIGHT = 63, 88 # standard mtg card in mm
