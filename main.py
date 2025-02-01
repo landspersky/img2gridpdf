@@ -45,6 +45,7 @@ def main():
 
     px_width = mm_to_px(CELL_WIDTH)
     px_height = mm_to_px(CELL_HEIGHT)
+    page_index = 0
 
     for image_chunk in chunk_list(image_files, GRID_ROWS * GRID_COLS):
         pdf.add_page()
@@ -57,12 +58,14 @@ def main():
             img = Image.open(img_path)
             img.thumbnail((px_width, px_height), Image.LANCZOS)
 
-            temp_path = f'temp_{index}.png'
+            temp_path = f'temp_{page_index}_{index}.png'
             img.save(temp_path, dpi=(DPI, DPI))
 
             pdf.image(temp_path, x, y, w=CELL_WIDTH, h=CELL_HEIGHT)
 
             os.remove(temp_path)
+
+        page_index += 1
 
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
